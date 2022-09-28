@@ -101,13 +101,6 @@ function VideoChatApp(props) {
     peer.signal(callerSignal);
   }
 
-  let UserVideo;
-  if (stream) {
-    UserVideo = (
-      <Video className='userVideo' playsInline muted ref={userVideo} autoPlay />
-    );
-  }
-
   let mainView;
 
   if (callAccepted) {
@@ -117,19 +110,19 @@ function VideoChatApp(props) {
   } else if (receivingCall) {
     mainView = (
       <div>
-        <h5>{props.opponentUserName} is calling you</h5>
+        <small className='text-white'>{props.opponentUserName} is calling you</small>
         <button onClick={acceptCall}><h5>Accept</h5></button>
       </div>
     )
   } else if (isCalling) {
     mainView = (
       <div>
-        <h5>Currently calling {props.opponentUserName}...</h5>
+        <small className='text-white'>Currently calling {props.opponentUserName}...</small>
       </div>
     )
   } else {
     mainView = (
-      <button onClick = {() => {
+      <button className='videoCallButton' onClick = {() => {
         callPeer(props.opponentSocketId)
       }}><img src={VideoIcon} /></button>
     )
@@ -140,7 +133,6 @@ function VideoChatApp(props) {
   return (<Container>
       <Row>
         {mainView}
-        {UserVideo}
       </Row>
     </Container>);
 }

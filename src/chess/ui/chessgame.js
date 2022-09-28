@@ -3,6 +3,7 @@ import Game from '../model/chess'
 import Square from '../model/square'
 import { Stage, Layer } from 'react-konva';
 import Board from '../assets/chessBoard.png'
+import Copy from '../assets/copy.png'
 import useSound from 'use-sound'
 import chessMove from '../assets/moveSoundEffect.mp3'
 import Piece from './piece'
@@ -11,6 +12,7 @@ import { useParams } from 'react-router-dom'
 import { ColorContext } from '../../context/colorcontext' 
 import VideoChatApp from '../../connection/videochat'
 import "./chessgame.css"
+import VideoStream from '../../connection/videostream';
 const socket  = require('../../connection/socket').socket
 
 
@@ -254,6 +256,7 @@ const ChessGameWrapper = (props) => {
     const [opponentDidJoinTheGame, didJoinGame] = React.useState(false)
     const [opponentUserName, setUserName] = React.useState('')
     const [gameSessionDoesNotExist, doesntExist] = React.useState(false)
+    const [copySuccess, setCopySuccess] = React.useState(false);
 
     React.useEffect(() => {
         socket.on("playerJoinedRoom", statusUpdate => {
@@ -304,21 +307,36 @@ const ChessGameWrapper = (props) => {
     }, [])
 
 
+    function copyToClipboard(e) {
+        navigator.clipboard.writeText(domainName + "/game/" + gameid)
+        setCopySuccess(true);
+      };
+
     return (
       <React.Fragment>
         {opponentDidJoinTheGame ? (
           <div className='chessPlay'>
-            <div className='chessPlayer'> 
-                <h4> You: {props.myUserName} </h4>
-                <span>
-                    <VideoChatApp
-                    mySocketId={socket.id}
-                    opponentSocketId={opponentSocketId}
-                    myUserName={props.myUserName}
-                    opponentUserName={opponentUserName}
-                    />
-                </span>
-                <h4> {opponentUserName}</h4> 
+            <div className='chessPlayer'>
+                <div className='chessUsers'>                     
+                    <h4 className='firstPlayer'>{props.myUserName} </h4>
+                    <span>
+                        <VideoStream
+                        mySocketId={socket.id}
+                        opponentSocketId={opponentSocketId}
+                        myUserName={props.myUserName}
+                        opponentUserName={opponentUserName}
+                        />
+                    </span>
+                </div>
+                <div className='videoCall'>
+                    <h4 className='secondPlayer'>{opponentUserName}</h4> 
+                    <VideoChatApp 
+                        mySocketId={socket.id}
+                        opponentSocketId={opponentSocketId}
+                        myUserName={props.myUserName}
+                        opponentUserName={opponentUserName}
+                        />
+                </div>
             </div>
             <div className='chessBoard'>
               <ChessGame
@@ -334,15 +352,26 @@ const ChessGameWrapper = (props) => {
           </div>
         ) : (
           <div className='urlContainer'>
-            <p>
+            <p className='text-white'>
               Hey <span>{props.myUserName}</span>,
               Send this url bellow to your friend to play
             </p>
-            <textarea
-                value = {domainName + "/game/" + gameid}
-                type = "text">
-            </textarea>
-            <small className='text-center'>
+            <div className='gameUrl'>
+                {!copySuccess ?(
+                    <p className='urlCopy'>
+                        {domainName + "/game/" + gameid}
+                    </p>
+                ): (                    
+                    <p className='urlCopy'>
+                        Link Copied!
+                    </p>
+                )}
+                
+                <span className='copeUrlText'  onClick={copyToClipboard}>
+                    <img src={Copy} alt="copy" />
+                </span>
+            </div>
+            <small className='text-center text-white'>
               {" "}
               Waiting for other opponent to join the game...{" "}
             </small>

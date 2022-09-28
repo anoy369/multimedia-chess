@@ -8,3 +8,9 @@ body{
     background-repeat: no-repeat;
     background-position: center;
 }
+#root{
+    padding: 5% 10%;
+}
+.videoCallButton img{
+    width: 50px;
+}

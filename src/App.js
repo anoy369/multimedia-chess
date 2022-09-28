@@ -64,7 +64,8 @@ function App() {
                     <ChessGame myUserName = {userName} />
                   </div>
                   :
-                  <JoinRoom />}
+                    <JoinRoom />
+                }
                </React.Fragment> 
           </Route>
           <Redirect to = "/" />

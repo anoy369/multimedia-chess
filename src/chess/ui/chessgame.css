@@ -22,7 +22,17 @@ h2{
     justify-content: center;
 }
 
-video.sc-AxiKw.UlRh {
+.sc-AxiKw.UlRh {
+    width: 100px!important;
+    height: 100px!important;
+    border: 3px solid #C4A881;
+    border-radius: 100%;
+    clip-path: circle();
+    object-fit: cover;
+    object-position: top;
+}
+
+video.sc-AxgMl.hDnjOq.userVideo {
     width: 100px!important;
     height: 100px!important;
     border: 3px solid #C4A881;
@@ -37,9 +47,11 @@ video.sc-AxiKw.UlRh {
 .chessPlayer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     margin-bottom: 50px;
+    margin-top: -5%;
+    /* padding: 0 10%; */
 }
 .chessPlayer h4{
     color: #fff;
@@ -50,4 +62,58 @@ video.sc-AxiKw.UlRh {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+}
+
+.chessUsers {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+}
+.chessUsers {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+}
+button.videoCallButton {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+.videoCall {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gameUrl {
+    padding: 10px 10px 10px 30px;
+    background: #ffffff12;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 5px;
+    box-shadow: -10px 10px 44px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -10px 10px 44px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -10px 10px 44px 3px rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gameUrl p {
+    width: 100%;
+    font-size: 14px;
+    color: #fff;
+    padding-right: 40px;
+    margin: 0;
+}
+span.copeUrlText {
+    padding: 5px;
+    border: 1px solid #c6b090;
+    border-radius: 5px;
+    background: #ffffff5c;
+}
+span.copeUrlText img{
+    width: 20px
 }
