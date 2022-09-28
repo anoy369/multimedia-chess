@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+body{
+    background: url('./chess/assets/chess-bg.jpg');
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.349);
+    background-repeat: no-repeat;
+    background-position: center;
+}

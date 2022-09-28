@@ -1,0 +1,53 @@
+h2{
+    margin-bottom: 30px;
+}
+
+.urlContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.urlContainer p{
+    font-family: 'Playfair Display';
+    font-size: 30px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.chessBoard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+video.sc-AxiKw.UlRh {
+    width: 100px!important;
+    height: 100px!important;
+    border: 3px solid #C4A881;
+    border-radius: 100%;
+    clip-path: circle();
+    object-fit: cover;
+    object-position: top;
+}
+.sc-AxjAm.jFfiWD {
+    height: auto;
+}
+.chessPlayer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+.chessPlayer h4{
+    color: #fff;
+    font-size: 20px;
+}
+.sc-AxirZ.cUVYWJ {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}

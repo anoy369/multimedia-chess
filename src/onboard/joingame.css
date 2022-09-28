@@ -1,0 +1,10 @@
+h2{
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 82px;
+    /* color: #FFD700; */
+    background: -webkit-linear-gradient(190deg,#d3d3d3, #C4A881);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10%;
+}
