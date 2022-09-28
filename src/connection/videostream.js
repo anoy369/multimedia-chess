@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Peer from "simple-peer";
 import styled from "styled-components";
-import VideoIcon from "../chess/assets/video.svg"
 const socket  = require('../connection/socket').socket
 
 

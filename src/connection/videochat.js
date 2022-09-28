@@ -110,14 +110,14 @@ function VideoChatApp(props) {
   } else if (receivingCall) {
     mainView = (
       <div>
-        <small className='text-white'>{props.opponentUserName} is calling you</small>
-        <button onClick={acceptCall}><h5>Accept</h5></button>
+        <small className='text-white pr-2'>{props.opponentUserName} is calling you</small>
+        <button className='acceptCall' onClick={acceptCall}>Accept</button>
       </div>
     )
   } else if (isCalling) {
     mainView = (
       <div>
-        <small className='text-white'>Currently calling {props.opponentUserName}...</small>
+        <small className='text-white pr-2'>Calling {props.opponentUserName}...</small>
       </div>
     )
   } else {
