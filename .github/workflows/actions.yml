@@ -1,0 +1,44 @@
+name: Deploy to Hostinger
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      # Checkout the code from the GitHub repository
+      - name: Checkout code
+        uses: actions/checkout@v3.3.0
+      
+      # Install dependencies and build the React project
+      # - name: Install dependencies and build
+      #   run: |
+      #     npm run build
+
+       # Move the build files to the public_html directory and remove the build directory
+      - name: Move build files to public_html directory
+        run: |
+          mv build/* ./
+          rmdir build
+
+      # Deploy the public_html files to Hostinger using FTP
+      - name: Deploy to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ftp.anoy369.com # Replace with your Hostinger server
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: ./public_html/chess/
+          remote_dir: /public_html/chess/ # Replace with your Hostinger website directory
+          exclude: |
+            public/**
+            src/**
+            .gitignore
+            package-lock.json
+            package.json
+            README.md
